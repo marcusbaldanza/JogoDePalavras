@@ -1,0 +1,277 @@
+
+       body {
+            font-family: 'Arial', sans-serif;
+            display: grid;
+            grid-template-rows: 1fr auto;
+            height: 100vh;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 10px; /* Reduzido o padding para melhor visualização em telas pequenas */
+	        min-height: 100vh; 
+        }
+
+        .game-wrapper {
+            display: flex;
+			flex-direction: column; /* Elementos dispostos em coluna em telas pequenas */
+            gap: 20px;
+            justify-content: center; /* Centraliza os elementos horizontalmente */
+            align-items: center;
+            flex-grow: 1;  /* Permite que a área do jogo cresça para acomodar o conteúdo */
+        }
+
+        .game-container, .attempts-container, .ranking-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 90%;
+			max-width: 500px;
+        }
+
+        .attempts-container, .ranking-container {
+            width: 300px;
+        }
+
+ 	.ranking-container {
+	    width: 500px;	
+	}
+	
+	@media (min-width: 768px) {
+            /* Ajustes para tablets e telas maiores */
+            .game-wrapper {
+                flex-direction: row; /* Elementos voltam a ser dispostos lado a lado */
+                align-items: flex-start; /* Alinhamento superior */
+            }
+
+            .game-container, .attempts-container, .ranking-container {
+                width: 400px; /* Largura definida para telas maiores */
+            }
+
+            .attempts-container, .ranking-container {
+                width: 300px;
+            }
+
+            .ranking-container {
+                width: 500px;	
+            }
+        }
+
+        h1, h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #0277bd;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            width: 80%;
+            font-size: 16px;
+            border: 2px solid #0277bd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #0288d1;
+            outline: none;
+            box-shadow: 0px 0px 8px rgba(0, 136, 209, 0.5);
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .message {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #455a64;
+        }
+
+        .rules-container {
+            margin-top: 20px;
+            background-color: #f1f8e9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            color: #388e3c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .rules-container h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #388e3c;
+        }
+
+        .rules-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .rules-container ul li {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .attempts-container h2, .ranking-container h2 {
+            color: #0277bd;
+        }
+
+        .attempts-list, .ranking-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .attempts-list li, .ranking-list li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #e3f2fd;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Efeito de glow nas bordas */
+        .game-container, .attempts-container, .ranking-container {
+            border: 2px solid transparent;
+            background-image: linear-gradient(#fff, #fff), linear-gradient(to right, #0277bd, #4caf50);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        #newGameButton {
+            display: none;
+            margin-top: 20px;
+        }
+
+        /* Estilo do menu de início */
+        #startMenu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .correct-letter {
+            color: darkgreen;
+			font-weight: bold;
+			background-color: lightgreen;
+	}
+		.incorrect-letter {
+            color: red;
+			font-weight: normal;
+			background-color: lightyellow;
+	}
+
+/* Estilo para o rodapé */
+.game-footer {
+            background-color: #0277bd;
+            color: white;
+            text-align: center;
+            padding: 35px;
+            font-size: 18px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            width: 100%;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+            /* Removemos "position: absolute" para que o rodapé não fique fixo */
+            grid-row: 2; /* Define que o rodapé ocupará a segunda linha do grid */
+        }
+
+ #exportButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0277bd;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+		}
+
+        #exportButton:hover {
+            background-color: #01579b;
+        }
+
+        /* Estilos para a tabela exportada */
+        .exported-table {
+            width: 90%;
+            max-width: 800px;
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: 'Arial', sans-serif;
+            font-size: 18px; /* Fonte maior */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra para o quadro */
+            border: 2px solid transparent;
+            background-image: linear-gradient(#fff, #fff), linear-gradient(to right, #0277bd, #4caf50); /* Efeito de glow nas bordas */
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .exported-table th, .exported-table td {
+            border: 1px solid #ddd;
+            padding: 15px; /* Aumentado o espaçamento interno */
+            text-align: left;
+        }
+
+        .exported-table th {
+            background-color: #0277bd; /* Cor de fundo do cabeçalho */
+            color: white;
+        }
+
+        .exported-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+		
+		.table-footer {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #455a64; /* Cor do texto do rodapé */
+        }
+		
+		button:disabled { /* Estilo para botão desabilitado */
+        background-color: #cccccc;
+        cursor: default;
+		}
+
+		button.hint-used { /* Estilo adicional para botão de dica usado */
+        background-color: red; 
+		}
+
+        .word-box {
+            display: inline-block; /* Permite definir largura e altura */
+            width: 30px; /* Ajuste conforme necessário */
+            height: 30px; /* Ajuste conforme necessário */
+            border: 1px solid #ccc; /* Borda mínima */
+            text-align: center; /* Centraliza o texto horizontalmente */
+            line-height: 30px; /* Centraliza o texto verticalmente */
+            margin-right: 5px; /* Espaçamento entre as caixas */
+          }
+
+    
